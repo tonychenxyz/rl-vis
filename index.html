@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Links to HTML Pages</title>
+</head>
+<body>
+    <h1>Links to HTML Pages</h1>
+    <ul id="html-pages"></ul>
+
+    <script>
+        // Get all HTML files in the directory
+        const htmlFiles = Array.from(document.querySelectorAll('a[href$=".html"]')).map(a => a.href);
+        
+        console.log(htmlFiles)
+
+        // Generate links for each HTML file
+        htmlFiles.forEach(file => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = file;
+            a.textContent = file.split('/').pop();
+            li.appendChild(a);
+            document.getElementById('html-pages').appendChild(li);
+        });
+    </script>
+</body>
+</html>
